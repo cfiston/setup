@@ -1,0 +1,18 @@
+{
+  "configurations" : {
+    "hive-site": {
+        "hive.exec.compress.output": "true",
+        "hive.merge.mapfiles": "true",
+        "hive.server2.tez.initialize.default.sessions": "true",
+        "hive.server2.transport.mode": "http"
+    },
+    "mapred-site": {
+        "mapreduce.job.reduce.slowstart.completedmaps": "0.7",
+        "mapreduce.map.output.compress": "true",
+        "mapreduce.output.fileoutputformat.compress": "true"
+    },
+    "yarn-site": {
+        "yarn.acl.enable" : "true"
+    }
+  }
+}
