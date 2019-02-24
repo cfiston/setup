@@ -43,7 +43,7 @@ if [ "${install_ambari_server}" = "true" ]; then
     bash -c "sudo nohup ambari-server restart" || true
 
     sleep 60
-
+    sudo wget https://raw.githubusercontent.com/cfiston/setup/master/ambari-bootstrap/mysql-connector-java.jar /usr/share/java/
     sudo ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
     ambari_pass=admin source ~/ambari-bootstrap/extras/ambari_functions.sh
     sudo ambari_change_pass admin admin ${ambari_pass}
