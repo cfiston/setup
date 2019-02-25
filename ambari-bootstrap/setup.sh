@@ -47,6 +47,7 @@ if [ "${install_ambari_server}" = "true" ]; then
     sleep 60
     sudo wget https://raw.githubusercontent.com/cfiston/setup/master/ambari-bootstrap/mysql-connector-java.jar /usr/share/java/
     sudo ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
+    bash
     ambari_pass=admin source ~/ambari-bootstrap/extras/ambari_functions.sh
     sudo ambari_change_pass admin admin ${ambari_pass}
     sleep 1
@@ -84,7 +85,7 @@ cat << EOF > configuration-custom.json
 }
 EOF
 
-        sudo ./deploy-recommended-cluster.bash
+        sudo /opt/keibacloud/ambari-bootstrap/deploy/deploy-recommended-cluster.bash
 
         if [ "${install_nifi}" = "true" ]; then
             cd /opt
@@ -96,7 +97,8 @@ EOF
 
         cd ~
         sleep 5
-        sudo source ~/ambari-bootstrap/extras/ambari_functions.sh
+        bash
+        source ~/ambari-bootstrap/extras/ambari_functions.sh
         ambari_configs
         ambari_wait_request_complete 1
         cd ~
