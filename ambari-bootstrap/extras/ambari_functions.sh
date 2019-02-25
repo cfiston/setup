@@ -19,7 +19,7 @@ ambari_protocol=${ambari_protocol:-http}
 ambari_host=${ambari_host:-localhost}
 ambari_port=${ambari_port:-8080}
 ambari_api="${ambari_protocol}://${ambari_host}:${ambari_port}/api/v1"
-ambari_curl_cmd="curl -ksSu ${ambari_user}:${ambari_pass} -H x-requested-by:sean"
+ambari_curl_cmd="curl -ksSu ${ambari_user}:${ambari_pass} -H x-requested-by:keibacloud"
 export ambari_curl="${ambari_curl_cmd} ${ambari_api}"
 
 ## auto-detect cluster
@@ -104,4 +104,3 @@ function ambari_wait_request_complete() {
             | tr -cd '[:upper:]'" \
             'COMPLETED'
 }
-
