@@ -50,7 +50,8 @@ if [ "${install_ambari_server}" = "true" ]; then
     bash
     ambari_pass=admin source ~/ambari-bootstrap/extras/ambari_functions.sh
     #sudo ambari_change_pass admin admin ${ambari_pass}
-    echo "${ambari_pass}" | sudo passwd admin --stdin
+    curl -i -u admin:admin -H "X-Requested-By: ambari" -X PUT -d '{"Users": { "user_name": "admin", "password": "BadPass#1", "old_password": "admin"}}' http://localhost:8080/api/v1/users/admin
+    #echo "${ambari_pass}" | sudo passwd admin --stdin
     sleep 1
 
     if [ "${deploy}" = "true" ]; then
