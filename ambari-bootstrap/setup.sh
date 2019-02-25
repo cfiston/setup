@@ -49,7 +49,8 @@ if [ "${install_ambari_server}" = "true" ]; then
     sudo ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
     bash
     ambari_pass=admin source ~/ambari-bootstrap/extras/ambari_functions.sh
-    sudo ambari_change_pass admin admin ${ambari_pass}
+    #sudo ambari_change_pass admin admin ${ambari_pass}
+    echo "${ambari_pass}" | sudo passwd admin --stdin
     sleep 1
 
     if [ "${deploy}" = "true" ]; then
@@ -105,7 +106,7 @@ EOF
         sleep 10
 
         usermod -a -G users ${USER}
-        echo "${ambari_pass}" | passwd admin --stdin
+        echo "${ambari_pass}" | sudo passwd admin --stdin
         sudo sudo -u hdfs bash -c "
             hadoop fs -mkdir /user/admin;
             hadoop fs -chown admin /user/admin;
