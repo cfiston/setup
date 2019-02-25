@@ -31,7 +31,7 @@ yum -y -q install git epel-release ntpd screen mysql-connector-java jq python-ar
 #curl -H 'Authorization: token 80e2219ce56000ce884926d15046893fd34f45ed' -H 'Accept: application/vnd.github.v3.raw' -O  -L https://api.github.com/repos/cfiston/keibacloud/contents/ambari-bootstrap/extras/deploy/install-ambari-bootstrap.sh
 
 sudo yum -y -q install git
-sudo git clone https://42843ef02efad44503effe102510d0e9e332cf36@github.com/cfiston/keibacloud.git /opt/keibacloud
+sudo git clone https://cfiston%40gmail.com:3Xaliss%243@github.com/cfiston/keibacloud.git /opt/keibacloud
 sudo chmod 777 -R /opt/keibacloud
 cd chmod -R g+rw /opt/keibacloud/ambari-bootstrap
 sudo chown -R ${USER}:users /opt/keibacloud/ambari-bootstrap
