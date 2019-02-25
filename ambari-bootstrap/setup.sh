@@ -28,9 +28,14 @@ yum -y -q install git epel-release ntpd screen mysql-connector-java jq python-ar
 #      --header 'Accept: application/vnd.github.v3.raw' \
 #      --remote-name \
 #      --location https://raw.githubusercontent.com/cfiston/keibacloud/master/generic/setup.sh| bash
-curl -H 'Authorization: token 80e2219ce56000ce884926d15046893fd34f45ed' -H 'Accept: application/vnd.github.v3.raw' -O  -L https://api.github.com/repos/cfiston/keibacloud/contents/ambari-bootstrap/extras/deploy/install-ambari-bootstrap.sh
-sudo chmod 777 install-ambari-bootstrap.sh
-sudo ./install-ambari-bootstrap.sh
+#curl -H 'Authorization: token 80e2219ce56000ce884926d15046893fd34f45ed' -H 'Accept: application/vnd.github.v3.raw' -O  -L https://api.github.com/repos/cfiston/keibacloud/contents/ambari-bootstrap/extras/deploy/install-ambari-bootstrap.sh
+
+sudo yum -y -q install git
+sudo git clone https://42843ef02efad44503effe102510d0e9e332cf36@github.com/cfiston/keibacloud.git /opt/keibacloud
+sudo chmod 777 -R /opt/keibacloud
+cd chmod -R g+rw /opt/keibacloud/ambari-bootstrap
+sudo chown -R ${USER}:users /opt/keibacloud/ambari-bootstrap
+ln -s /opt/keibacloud/ambari-bootstrap ~/
 sudo ~/ambari-bootstrap/extras/deploy/prep-hosts.sh
 
 sudo ~/ambari-bootstrap/ambari-bootstrap.sh
